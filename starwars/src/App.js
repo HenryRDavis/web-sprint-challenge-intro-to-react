@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import './App.css';
+import Character from './components/Character'
+import { BASE_URL, API_KEY } from './constants';
 
 const App = () => {
+  const [characters, setCharacter] = useState(Character)
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
+  useEffect(() => {
+    axios.get(`${BASE_URL}${API_KEY}`)
+      .then(info => 
+        setCharacter(info.data.results))
+      .catch(err => 
+        console.log(err, 'And I Oop!'))
+  }, [])
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -12,6 +23,11 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      {
+      characters.map(function(item){
+        return <Character name={item.name}/>
+      })
+      }
     </div>
   );
 }
