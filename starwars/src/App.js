@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import './App.css';
-import Character from './components/Character'
+import Character from './components/Character';
 import { BASE_URL, API_KEY } from './constants';
 
 const App = () => {
@@ -10,8 +10,8 @@ const App = () => {
   // the state properties here.
   useEffect(() => {
     axios.get(`${BASE_URL}${API_KEY}`)
-      .then(info => 
-        setCharacter(info.data.results))
+      .then(res => 
+        setCharacter(res.data.results))
       .catch(err => 
         console.log(err, 'And I Oop!'))
   }, [])
@@ -24,7 +24,7 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Characters</h1>
       {
-      characters.map(function(item){
+      characters.map((item) => {
         return <Character name={item.name}/>
       })
       }

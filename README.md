@@ -30,11 +30,20 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
 
+React JS has better handling of dynamic data for faster response times, it also helps in designing simple UI for every application state.
+
 1. Describe component state.
+
+component state is an object that determines how that component renders & behaves.
 
 1. Describe props.
 
+Props are things that can be passed down from one component to another.
+
+
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+
+side effects are a state change that is observable outside the called function other than its return value
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
