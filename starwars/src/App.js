@@ -5,7 +5,7 @@ import Character from './components/Character';
 import { BASE_URL, API_KEY } from './constants';
 
 const App = () => {
-  const [characters, setCharacter] = useState(Character)
+  const [characters, setCharacter] = useState([])
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   useEffect(() => {
@@ -13,7 +13,7 @@ const App = () => {
       .then(res => 
         setCharacter(res.data.results))
       .catch(err => 
-        console.log(err, 'And I Oop!'))
+          console.log(err, 'And I Oop!'))
   }, [])
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
@@ -22,10 +22,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <h1 className="Header">Star Wars Characters</h1>
       {
-      characters.map((item) => {
-        return <Character name={item.name}/>
+      characters.map((data) => {
+        return <Character key={data.name} props={data}/>
       })
       }
     </div>
